@@ -50,7 +50,8 @@ function converterMoeda() {
 
     const taxa = taxasCambio[moedaOrigem][moedaDestino];
     /*taxa = taxasCambio[moedaOrigem]["dolar"];*/
-    const resultado = valor * taxa;
+        const resultado = valor * taxa;
+       
 
     // Exibir o resultado (substitua pela lógica de exibição real)
     const valor_logo_ModOrigem = document.getElementById('moeda-nomeO');
@@ -60,19 +61,21 @@ function converterMoeda() {
     const logo_ModOrigem = document.querySelector('#divisao-dos-logoMoedas img:nth-child(1)');
     const logo_ModDestino = document.querySelector('#divisao-dos-logoMoedas img:nth-child(6)');
     
+    /*valor_ModOrigem.textContent = document.getElementById('moeda-valorO');
+    valor_ModDestino.textContent = document.getElementById('moeda-valorD');*/
 
     valor_logo_ModOrigem.textContent = moedaOrigem;
     valor_logo_ModDestino.textContent = moedaDestino;
     if ( moedaOrigem == "real") {
-        valor_ModOrigem.textContent = `R$ ${valor.toFixed(2)}`;
+        valor_ModOrigem.textContent = `${valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
         logo_ModOrigem.src = "./img/brasil.png";
         
     } else if (moedaOrigem == "dolar") {
-        valor_ModOrigem.textContent = `$ ${valor.toFixed(2)}`;
+        valor_ModOrigem.textContent = `${valor.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`;
         logo_ModOrigem.src = "./img/estados-unidos.png";
         
     }else if(moedaOrigem == "euro"){
-        valor_ModOrigem.textContent = `€ ${valor.toFixed(2)}`;
+        valor_ModOrigem.textContent = `${valor.toLocaleString('eu-PT', { style: 'currency', currency: 'EUR' })}`;
         logo_ModOrigem.src = "./img/euro.png";
         
     }else if(moedaOrigem == "bitcoin"){
@@ -80,21 +83,21 @@ function converterMoeda() {
         logo_ModOrigem.src = "./img/bitcoin.png";
         
     }else{
-        valor_ModOrigem.textContent = `£ ${valor.toFixed(2)}`;
+        valor_ModOrigem.textContent = `${valor.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' })}`;
         logo_ModOrigem.src = "./img/libra.png";
         
     }
 
     if ( moedaDestino == "real") {
-        valor_ModDestino.textContent = `R$ ${resultado.toFixed(2)}`;
+        valor_ModDestino.textContent = `${resultado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
         logo_ModDestino.src = "./img/brasil.png";
         
     } else if (moedaDestino == "dolar") {
-        valor_ModDestino.textContent = `$ ${resultado.toFixed(2)}`;
+        valor_ModDestino.textContent = `${resultado.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`;
         logo_ModDestino.src = "./img/estados-unidos.png";
         
     }else if(moedaDestino == "euro"){
-        valor_ModDestino.textContent = `€ ${resultado.toFixed(2)}`;
+        valor_ModDestino.textContent = `${resultado.toLocaleString('eu-PT', { style: 'currency', currency: 'EUR' })}`;
         logo_ModDestino.src = "./img/euro.png";
         
     }else if(moedaDestino == "bitcoin"){
@@ -102,7 +105,7 @@ function converterMoeda() {
         logo_ModDestino.src = "./img/bitcoin.png";
         
     }else{
-        valor_ModDestino.textContent = `£ ${resultado.toFixed(2)}`;
+        valor_ModDestino.textContent = `${resultado.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' })}`;
         logo_ModDestino.src = "./img/libra.png";
         
     }
