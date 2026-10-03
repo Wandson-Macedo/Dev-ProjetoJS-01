@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js"></script>
+    <title>Conversor de Moedas - DevClub</title>
+</head>
+<body>
+    <div id="div_conversor">
+        <div id="divconversor-styles">
+            <h3>Converter de:</h3>
+            <select class="moeda" name="conv_origen">
+                <option value="real" selected>Real</option>
+                <option value="dolar">Dolar</option>
+                <option value="euro">Euro</option>
+                <option value="bitcoin">Bitcoin</option>
+                <option value="libra">Libra</option>
+            </select>
+            <h3>Converter para:</h3>
+            <select class="moeda" name="conv_destino">
+                <option value="real">Real</option>
+                <option value="dolar" selected>Dolar</option>
+                <option value="euro">Euro</option>
+                <option value="bitcoin">Bitcoin</option>
+                <option value="libra">Libra</option>
+            </select>
+            <h3>Valor:</h3>
+            <input type="text" id="entrada_valor"/><br>
+            <button id="Botao_converter" onclick="converterMoeda()">Converter</button>
+            <div id="divisao-dos-logoMoedas">
+                <img src="./img/brasil.png" alt="logo real" style="width:44px; height:44px;">
+                <p id="moeda-nomeO">Real</p>
+                <p id="moeda-valorO">R$ 1,00</p>
+                <img src="./img/Vector.png" alt="logo dolar" style="width:44px; height:44px; padding: 5px;"><BR>
+                <img src="./img/estados-unidos.png" alt="logo euro" style="width:44px; height:44px;">
+                <p id="moeda-nomeD">Dolar</p>
+                <p id="moeda-valorD">$ 1,00</p>
+                
+            </div>
+        </div>
+    </div>
+    <div id="div_logo">
+        <img src="./img/0b855c3cee7fbceab7a89831e6096fe140b43ca9.gif" alt="logo conversor moedas gif" style="width:300px; height:auto;">
+    </div>
+</body>
+</html>
