@@ -1,43 +1,44 @@
-function converterMoeda() {
+ async function converterMoeda() {
     // Lógica para converter moedas
     const moedaOrigem = document.querySelector('select[name="conv_origen"]').value;
     const moedaDestino = document.querySelector('select[name="conv_destino"]').value;
     const valor = parseFloat(document.getElementById('entrada_valor').value);
 
     // Exemplo de valores de câmbio (substitua pelos valores reais)
+    const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,USD-EUR,USD-GBP,BRL-USD,BRL-EUR,BRL-GBP,EUR-BRL,EUR-USD,EUR-GBP,BTC-BRL,GBP-BRL,GBP-USD,GBP-EUR,BTC-BRL,BTC-USD,BTC-EUR").then(response => response.json())
     const taxasCambio = {
         real: {
-            dolar: 0.19,
-            euro: 0.17,
+            dolar: data.BRLUSD.bid,
+            euro: data.BRLEUR.bid,
             real: 1.00,
-            bitcoin: 0.0000023,    
-            libra: 0.15
+            bitcoin: data.BTCBRL.bid,    
+            libra: data.BRLGBP.bid
         },
         dolar: {
-            real: 5.21,
-            euro: 0.89,
+            real: data.USDBRL.bid,
+            euro: data.USDEUR.bid,
             dolar: 1.00,
-            bitcoin: 0.000012,
-            libra: 0.75
+            bitcoin: data.BTCUSD.bid,
+            libra: data.USDGBP.bid
         },
         euro: {
-            real: 5.87,
-            dolar: 1.13,
+            real: data.EURBRL.bid,
+            dolar: data.EURUSD.bid,
             euro: 1.00,
-            bitcoin: 0.000013,
-            libra: 0.85
+            bitcoin: data.BTCEUR.bid,
+            libra: data.EURGBP.bid
         },
         bitcoin: {
-            real: 440.834,
-            dolar: 84.608,
-            euro: 75.145,
+            real: data.BTCBRL.bid,
+            dolar: data.BTCUSD.bid,
+            euro: data.BTCEUR.bid,
             bitcoin: 1.00,
             libra: 63.889
         },
         libra: {
-            real: 6.67,
-            dolar: 1.33,
-            euro: 1.18,
+            real: data.GBPBRL.bid,
+            dolar: data.GBPUSD.bid,
+            euro: data.GBPEUR.bid,
             bitcoin: 0.000016,
             libra: 1.00
         }
@@ -49,9 +50,15 @@ function converterMoeda() {
     }
 
     const taxa = taxasCambio[moedaOrigem][moedaDestino];
+    let resultado = 0;
     /*taxa = taxasCambio[moedaOrigem]["dolar"];*/
-        const resultado = valor * taxa;
-       
+    
+    if(moedaDestino === "bitcoin"){
+        resultado = valor / taxa;
+    }else{
+        resultado = valor * taxa;
+    }
+           
 
     // Exibir o resultado (substitua pela lógica de exibição real)
     const valor_logo_ModOrigem = document.getElementById('moeda-nomeO');
